@@ -1,0 +1,116 @@
+#+PROPERTY: header-args :tangle init.el
+
+* Package Management
+** Repos
+Sets the package repos and initializes use package on Windows
+#+begin_src elisp
+;    (require 'package)
+;  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+;			   ("org" . "https://orgmode.org/elpa")
+;			   ("elpa" . "https://elpa.gnu.org/packages/")))
+#+end_src
+
+** Initialization
+
+#+begin_src elisp
+;;  (package-initialize)
+;;  (unless package-archive-contents
+;;    (package-refresh-contents))
+
+#+end_src
+
+** Windows
+Initialize use-package on non-Linux platforms
+#+begin_src elisp
+;;  (unless (package-installed-p 'use-package)
+;;    (package-install 'use-package))
+
+;;    (require 'use-package)
+;;    (setq use-package-always-ensure t)
+
+#+end_src
+* Evil
+Install and enable vim
+#+begin_src elisp
+
+  ;; Set up package.el to work with MELPA
+  (require 'package)
+  (add-to-list 'package-archives
+	       '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize)
+  (package-refresh-contents)
+
+  ;; Download Evil
+  (unless (package-installed-p 'evil)
+    (package-install 'evil))
+
+  ;; Enable Evil
+  (require 'evil)
+  (evil-mode 1)
+
+#+end_src
+
+Unmaps some keys from evil mode
+#+begin_src elisp
+
+  (with-eval-after-load 'evil-maps
+    (define-key evil-motion-state-map (kbd "SPC") nil)
+    (define-key evil-motion-state-map (kbd "RET") nil)
+    (define-key evil-motion-state-map (kbd "TAB") nil))
+
+#+end_src
+
+* Basic UI Config
+** Basics
+#+begin_src elisp
+
+  (setq inhibit-startup-message t)
+  (global-visual-line-mode t)
+  (global-display-line-numbers-mode 1)
+
+  ;; Make ESC quit prompts
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+  (setq org-return-follows-link t)
+  (scroll-bar-mode t)
+  (tool-bar-mode -1)
+  (set-fringe-mode -1)
+
+  (menu-bar-mode -1)
+  (setq visible-bell t)
+
+#+end_src
+
+** Coding system
+Sets to utf-8
+#+begin_src elisp
+
+;;  (set-default-coding-system 'utf-8)
+#+end_src
+** Universal argument
+#+begin_src elisp
+
+  (global-set-key (kbd "C-M-u") 'universal-argument)
+#+end_src
+* Font
+** Font and height
+#+begin_src elisp
+
+  (set-face-attribute 'default nil :font "Courier New" :height 140)
+  
+#+end_src
+** All the Icons
+#+begin_src elisp
+
+  (use-package all-the-icons)
+  (require 'all-the-icons)
+  
+#+end_src
+* Tempo
+
+#+begin_src elisp
+
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
+
+#+end_src
