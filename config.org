@@ -264,12 +264,41 @@ Stops a new line causing the current line to be indented in source blocks(woulda
 (setq diary-file "./.diary")
 (require 'org-habit)
 #+end_src
-* Tempo
+* Templates
 
 #+begin_src elisp
 
   (require 'org-tempo)
 
   (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
+
+#+end_src
+
+* Treesitter
+#+begin_src elisp
+;;(require 'tree-sitter)
+;;(require 'tree-sitter-langs)
+
+(use-package tree-sitter
+  :ensure t
+  :defer t
+  :init)
+#+end_src
+
+* Treemacs
+
+#+begin_src elisp
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init)
+#+end_src
+
+* Which Key
+
+Which-key installed first with package-install
+#+begin_src elisp
+
+(which-key-mode)
 
 #+end_src

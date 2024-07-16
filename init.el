@@ -174,3 +174,18 @@
   (require 'org-tempo)
 
   (add-to-list 'org-structure-template-alist '("el" . "src elisp"))
+
+;;(require 'tree-sitter)
+;;(require 'tree-sitter-langs)
+
+(use-package tree-sitter
+  :ensure t
+  :defer t
+  :init)
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init)
+
+(which-key-mode)

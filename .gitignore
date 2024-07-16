@@ -3,4 +3,5 @@ eln-cache/
 elpa/
 init.el~
 org-persist/
-	
+org-roam.db
+%backup%~
