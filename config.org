@@ -67,6 +67,7 @@ Initialize use-package on non-Linux platforms
   (setq inhibit-startup-message t)
   (global-visual-line-mode t)
   (global-display-line-numbers-mode 1)
+  (setq display-line-numbers-type 'relative)
 
   ;; Make ESC quit prompts
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -135,7 +136,12 @@ Sets to utf-8
 #+begin_src elisp
 (setq org-startup-with-inline-images t)
 #+end_src
-
+* Helm
+;#+begin_src elisp
+;(use-package helm
+;  :ensure t
+;  :config)
+#+end_;src
 * Counsel
 
 #+begin_src elisp
@@ -301,4 +307,10 @@ Which-key installed first with package-install
 
 (which-key-mode)
 
+#+end_src
+
+* Syntax Highlighting
+#+begin_src elisp
+(use-package nix-mode
+  :mode "\\.nix\\'")
 #+end_src

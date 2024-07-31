@@ -36,6 +36,7 @@
   (setq inhibit-startup-message t)
   (global-visual-line-mode t)
   (global-display-line-numbers-mode 1)
+  (setq display-line-numbers-type 'relative)
 
   ;; Make ESC quit prompts
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -189,3 +190,6 @@
   :init)
 
 (which-key-mode)
+
+(use-package nix-mode
+  :mode "\\.nix\\'")
